@@ -145,16 +145,18 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
         Vector<String> datosAFiltrar = originalActivo ? datosOriginal : datosOrdenado;
 
         String cadena = editorTexto.getText();
-
+        // TODO: Evitar excepcón, que cuando esté en blanco 
+        // TODO: Poner cursor al ultimo
         for (int i = 0; i < datosAFiltrar.size(); i++) {
-            if (datosAFiltrar.get(i).contains(cadena)) {
+            String cadenaAComparar = "";
+            cadenaAComparar = datosAFiltrar.get(i).toLowerCase().substring(0, cadena.length());
+            if (cadenaAComparar.contains(cadena.toLowerCase())) {
                 datosFiltrados.add(datosAFiltrar.get(i));
             }
         }
         comboModel = new DefaultComboBoxModel<>(datosFiltrados);
         combo.setModel(comboModel);
         editorTexto.setText(cadena);
-
     }
 
 }
