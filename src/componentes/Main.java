@@ -3,6 +3,7 @@ package componentes;
 /**
  *
  * @author Carlos Contreras
+ * @author Osiel Sainz
  */
 public class Main {
 
