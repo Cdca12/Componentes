@@ -44,6 +44,15 @@ public class FrameTest extends JFrame {
         nuevoComboFilter.agrega(vectorDatos);
         nuevoComboFilter.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         add(nuevoComboFilter);
+        
+        JComboFilter otroComboFilter = new JComboFilter();
+        otroComboFilter.setBounds(20, 250, 200, 50);
+        String[] datos = {
+        "Osiel", "Carlos", "Osiel", "Mario", "Omar", "Michel"
+        };
+        otroComboFilter.agrega(datos);
+        otroComboFilter.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        add(otroComboFilter);
 
         add(comboFilter);
         setLayout(null);

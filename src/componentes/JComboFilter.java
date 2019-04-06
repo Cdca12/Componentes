@@ -69,6 +69,16 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
         combo.setModel(comboModel);
         datosOriginal = datos;
     }
+    
+    public void agrega(String[] datos) {
+        Vector<String> vectorDatos = new Vector<>(datos.length);
+        for (int i = 0; i < datos.length; i++) {
+            vectorDatos.add(datos[i]);
+        }
+        comboModel = new DefaultComboBoxModel<>(vectorDatos);
+        combo.setModel(comboModel);
+        datosOriginal = vectorDatos;
+    }
 
     private void ordenaDatos() {
         datosOrdenado = new Vector<String>(datosOriginal);
@@ -107,33 +117,6 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
 //        combo.setModel(comboModel);
     }
 
-//    @Override
-//	public void keyReleased(KeyEvent evt) {
-//		String filter = editor.getText();
-//		char aux = evt.getKeyChar();
-//		Vector<String> auxV = (btnOriginalItems.isEnabled())? sortedElements : elements ,
-//				filterArray = new Vector<String>();
-//		
-//		if(!Character.isLetter(aux) && !Character.isDigit(aux) &&  !Character.isWhitespace(aux)) {
-//			if(filter.length() < 1) {
-//				System.out.println(auxV.get(0));
-//				model = new DefaultComboBoxModel<String>(auxV);
-//				combo.setModel(model);
-//			}
-//			return;
-//		}
-//		
-//		System.out.println(filter);
-//
-//		for(String i: auxV) {
-//			if(matches(i,filter))
-//				filterArray.add(i);
-//		}
-//
-//		model = new DefaultComboBoxModel<String>(filterArray);
-//		combo.setModel(model);
-//		editor.setText(filter);
-//	}
     @Override
     public void keyPressed(KeyEvent ke) {
 
