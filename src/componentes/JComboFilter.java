@@ -1,13 +1,13 @@
 package componentes;
 
 import java.awt.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Vector;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
 
 import javax.swing.*;
 
-public class JComboFilter extends JPanel {
+public class JComboFilter extends JPanel implements ActionListener{
 
     private JComboBox<String> combo;
     private JPanel panelBotones;
@@ -18,14 +18,14 @@ public class JComboFilter extends JPanel {
     private Vector datosOrdenado;
     public JComboFilter() {
         initInterface();
+        hazEscuchas();
     }
 
     private void initInterface() {
         setLayout(new FlowLayout());
         
-        
         combo = new JComboBox<>();
-        combo.addItem("Selecciona");
+//        combo.addItem("Selecciona");
         combo.setPreferredSize(new Dimension(120, 40));
         combo.setEditable(true);
         add(combo);
@@ -36,8 +36,9 @@ public class JComboFilter extends JPanel {
 
         btnOrdenadoOriginal = new JButton("Ori");
         btnOrdenadoOriginal.setPreferredSize(new Dimension(20, 10));
+        btnOrdenadoOriginal.setEnabled(false);
         panelBotones.add(btnOrdenadoOriginal);
-
+        
         btnOrdenadoAsc = new JButton("Ord");
         panelBotones.add(btnOrdenadoAsc);
 
@@ -45,6 +46,10 @@ public class JComboFilter extends JPanel {
         
         datosOriginal = new Vector<String>();
         
+    }
+    private void hazEscuchas() {
+    	btnOrdenadoAsc.addActionListener(this);
+    	btnOrdenadoOriginal.addActionListener(this);
     }
     
     public void agrega(String dato) {
@@ -60,4 +65,26 @@ public class JComboFilter extends JPanel {
     	datosOrdenado = new Vector<String>(datosOriginal);
     	Collections.sort(datosOrdenado);
     }
+
+	@Override
+	public void actionPerformed(ActionEvent evt) {
+		if(evt.getSource()==btnOrdenadoAsc){
+			System.out.println("llego1");
+			ordenaDatos();
+			comboModel = new DefaultComboBoxModel<>(datosOrdenado);
+			combo.setModel(comboModel);
+			btnOrdenadoAsc.setEnabled(false);
+			btnOrdenadoOriginal.setEnabled(true);
+			return;
+		}
+		if(evt.getSource()==btnOrdenadoOriginal){
+			System.out.println("llego2");
+			comboModel = new DefaultComboBoxModel<>(datosOriginal);
+			combo.setModel(comboModel);
+			btnOrdenadoOriginal.setEnabled(false);
+			btnOrdenadoAsc.setEnabled(true);
+			return;
+		}
+		
+	}
 }
