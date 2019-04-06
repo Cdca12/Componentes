@@ -16,10 +16,14 @@ public class FrameTest extends JFrame {
         
         comboFilter = new JComboFilter();
         comboFilter.setBounds(20, 20, 400, 150);
+        comboFilter.agrega("Osiel");
+        comboFilter.agrega("Emanuel");
+        comboFilter.agrega("Carlos");
+        comboFilter.agrega("Pedro");
         add(comboFilter);
-        
+        System.out.println(comboFilter.test());
         setLayout(null);
-        setSize(600, 400);
+        setSize(400, 400);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
