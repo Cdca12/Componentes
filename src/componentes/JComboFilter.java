@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.util.*;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 
 public class JComboFilter extends JPanel implements ActionListener, KeyListener {
 
@@ -18,6 +19,8 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
     private ComboBoxModel<String> comboModel;
     private Vector datosOriginal;
     private Vector datosOrdenado;
+    private JTextComponent editorTexto;
+    private boolean originalActivo = true;
 
     public JComboFilter() {
         initInterface();
@@ -31,14 +34,14 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
 //        combo.addItem("Selecciona");
         combo.setPreferredSize(new Dimension(120, 40));
         combo.setEditable(true);
+        editorTexto = (JTextComponent) combo.getEditor().getEditorComponent();
         add(combo);
 
         panelBotones = new JPanel(new GridLayout(0, 1, 0, 5));
         panelBotones.setPreferredSize(new Dimension(55, 40));
 
         btnOrdenadoOriginal = new JButton("Ori");
-        btnOrdenadoOriginal.setPreferredSize(new Dimension(20, 10));
-        btnOrdenadoOriginal.setEnabled(false);
+        btnOrdenadoOriginal.setEnabled(true);
         panelBotones.add(btnOrdenadoOriginal);
 
         btnOrdenadoAsc = new JButton("Ord");
@@ -53,7 +56,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
     private void hazEscuchas() {
         btnOrdenadoAsc.addActionListener(this);
         btnOrdenadoOriginal.addActionListener(this);
-        combo.getEditor().getEditorComponent().addKeyListener(this);
+        editorTexto.addKeyListener(this);
     }
 
     public void agrega(String dato) {
@@ -75,7 +78,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
     @Override
     public void actionPerformed(ActionEvent evt) {
         if (evt.getSource() == btnOrdenadoAsc) {
-            System.out.println("llego1");
+            originalActivo = false;
             ordenaDatos();
             comboModel = new DefaultComboBoxModel<>(datosOrdenado);
             combo.setModel(comboModel);
@@ -84,30 +87,74 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
             return;
         }
         if (evt.getSource() == btnOrdenadoOriginal) {
-            System.out.println("llego2");
+            originalActivo = true;
             comboModel = new DefaultComboBoxModel<>(datosOriginal);
             combo.setModel(comboModel);
             btnOrdenadoOriginal.setEnabled(false);
             btnOrdenadoAsc.setEnabled(true);
             return;
         }
-
     }
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        for (int i = 0; i < datosFiltrados.size(); i++) {
+//            if (cadena == combo.getItemAt(i).substring(0, cadena.length())) {
+//                datosFiltrados.removeElementAt(i);
+//            }
+//        }
+//        comboModel = new DefaultComboBoxModel<>(datosFiltrados);
+//        combo.setModel(comboModel);
     }
 
+//    @Override
+//	public void keyReleased(KeyEvent evt) {
+//		String filter = editor.getText();
+//		char aux = evt.getKeyChar();
+//		Vector<String> auxV = (btnOriginalItems.isEnabled())? sortedElements : elements ,
+//				filterArray = new Vector<String>();
+//		
+//		if(!Character.isLetter(aux) && !Character.isDigit(aux) &&  !Character.isWhitespace(aux)) {
+//			if(filter.length() < 1) {
+//				System.out.println(auxV.get(0));
+//				model = new DefaultComboBoxModel<String>(auxV);
+//				combo.setModel(model);
+//			}
+//			return;
+//		}
+//		
+//		System.out.println(filter);
+//
+//		for(String i: auxV) {
+//			if(matches(i,filter))
+//				filterArray.add(i);
+//		}
+//
+//		model = new DefaultComboBoxModel<String>(filterArray);
+//		combo.setModel(model);
+//		editor.setText(filter);
+//	}
     @Override
     public void keyPressed(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Vector<String> datosFiltrados = new Vector();
+        Vector<String> datosAFiltrar = originalActivo ? datosOriginal : datosOrdenado;
+
+        String cadena = editorTexto.getText();
+
+        for (int i = 0; i < datosAFiltrar.size(); i++) {
+            if (datosAFiltrar.get(i).contains(cadena)) {
+                datosFiltrados.add(datosAFiltrar.get(i));
+            }
+        }
+        comboModel = new DefaultComboBoxModel<>(datosFiltrados);
+        combo.setModel(comboModel);
+        editorTexto.setText(cadena);
+
     }
-    
-    
+
 }
