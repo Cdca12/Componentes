@@ -1,5 +1,6 @@
 package ComponentesAuxiliares;
 
+import com.sun.net.httpserver.Filter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,7 +73,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         combo.setModel(comboModel);
         datosOriginal = datos;
     }
-    
+
     public void agrega(String[] datos) {
         Vector<String> vectorDatos = new Vector<>(datos.length);
         for (int i = 0; i < datos.length; i++) {
@@ -120,20 +121,30 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        
+        char keyChar = ke.getKeyChar();
+        // Valido si no es letra, digito o el backspace, retornar para que no haga render y tire excepcion
+        if (!Character.isLetter(keyChar) && !Character.isDigit(keyChar) && (ke.getKeyCode() != KeyEvent.VK_BACK_SPACE)) {
+            return;
+        }
+
         Vector<String> datosFiltrados = new Vector();
         Vector<String> datosAFiltrar = originalActivo ? datosOriginal : datosOrdenado;
 
         String cadena = editorTexto.getText();
-        // TODO: Poner cursor al ultimo
-        for (int i = 0; i < datosAFiltrar.size(); i++) {
-            String cadenaAComparar = datosAFiltrar.get(i).toLowerCase().substring(0, cadena.length());
+
+        String cadenaAComparar = "";
+        for (int i = 0;
+                i < datosAFiltrar.size();
+                i++) {
+            cadenaAComparar = datosAFiltrar.get(i).toLowerCase().substring(0, cadena.length());
             if (cadenaAComparar.contains(cadena.toLowerCase())) {
                 datosFiltrados.add(datosAFiltrar.get(i));
             }
         }
         comboModel = new DefaultComboBoxModel<>(datosFiltrados);
+
         combo.setModel(comboModel);
+
         editorTexto.setText(cadena);
     }
 
