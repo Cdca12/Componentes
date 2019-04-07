@@ -133,18 +133,15 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         String cadena = editorTexto.getText();
 
         String cadenaAComparar = "";
-        for (int i = 0;
-                i < datosAFiltrar.size();
-                i++) {
+        for (int i = 0; i < datosAFiltrar.size(); i++) {
             cadenaAComparar = datosAFiltrar.get(i).toLowerCase().substring(0, cadena.length());
             if (cadenaAComparar.contains(cadena.toLowerCase())) {
                 datosFiltrados.add(datosAFiltrar.get(i));
             }
         }
         comboModel = new DefaultComboBoxModel<>(datosFiltrados);
-
         combo.setModel(comboModel);
-
+        combo.showPopup();
         editorTexto.setText(cadena);
     }
 
@@ -152,6 +149,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
     public void focusGained(FocusEvent fe) {
         // Posiciona el cursor al final del texto
         editorTexto.setCaretPosition(editorTexto.getText().length());
+//        combo.showPopup();
     }
 
     @Override
