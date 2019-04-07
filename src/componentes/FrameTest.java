@@ -1,5 +1,6 @@
 package componentes;
 
+import ComponentesAuxiliares.JComboFilter;
 import java.awt.Color;
 import java.util.Vector;
 import javax.swing.BorderFactory;

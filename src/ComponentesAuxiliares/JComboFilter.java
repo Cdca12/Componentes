@@ -1,8 +1,10 @@
-package componentes;
+package ComponentesAuxiliares;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.*;
@@ -10,7 +12,7 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
-public class JComboFilter extends JPanel implements ActionListener, KeyListener {
+public class JComboFilter extends JPanel implements ActionListener, KeyListener, FocusListener {
 
     private JComboBox<String> combo;
     private JPanel panelBotones;
@@ -57,6 +59,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
         btnOrdenadoAsc.addActionListener(this);
         btnOrdenadoOriginal.addActionListener(this);
         editorTexto.addKeyListener(this);
+        editorTexto.addFocusListener(this);
     }
 
     public void agrega(String dato) {
@@ -108,13 +111,6 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
 
     @Override
     public void keyTyped(KeyEvent ke) {
-//        for (int i = 0; i < datosFiltrados.size(); i++) {
-//            if (cadena == combo.getItemAt(i).substring(0, cadena.length())) {
-//                datosFiltrados.removeElementAt(i);
-//            }
-//        }
-//        comboModel = new DefaultComboBoxModel<>(datosFiltrados);
-//        combo.setModel(comboModel);
     }
 
     @Override
@@ -124,15 +120,14 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
 
     @Override
     public void keyReleased(KeyEvent ke) {
+        
         Vector<String> datosFiltrados = new Vector();
         Vector<String> datosAFiltrar = originalActivo ? datosOriginal : datosOrdenado;
 
         String cadena = editorTexto.getText();
-        // TODO: Evitar excepcón, que cuando esté en blanco 
         // TODO: Poner cursor al ultimo
         for (int i = 0; i < datosAFiltrar.size(); i++) {
-            String cadenaAComparar = "";
-            cadenaAComparar = datosAFiltrar.get(i).toLowerCase().substring(0, cadena.length());
+            String cadenaAComparar = datosAFiltrar.get(i).toLowerCase().substring(0, cadena.length());
             if (cadenaAComparar.contains(cadena.toLowerCase())) {
                 datosFiltrados.add(datosAFiltrar.get(i));
             }
@@ -140,6 +135,16 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener 
         comboModel = new DefaultComboBoxModel<>(datosFiltrados);
         combo.setModel(comboModel);
         editorTexto.setText(cadena);
+    }
+
+    @Override
+    public void focusGained(FocusEvent fe) {
+        // Posiciona el cursor al final del texto
+        editorTexto.setCaretPosition(editorTexto.getText().length());
+    }
+
+    @Override
+    public void focusLost(FocusEvent fe) {
     }
 
 }
