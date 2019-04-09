@@ -11,7 +11,7 @@ import javax.swing.border.Border;
  * @author Carlos Contreras
  * @author Osiel Sainz
  */
-public class FrameTest extends JFrame {
+public class FrameTest extends JFrame{
 
     JComboFilter comboFilter;
 
@@ -55,10 +55,16 @@ public class FrameTest extends JFrame {
         add(otroComboFilter);
 
         add(comboFilter);
+        
+        //Cajas Multiples
+        CajasMultiples cajas = new CajasMultiples();
+        cajas.setBounds(300, 50, 700, 300);
+        cajas.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        add(cajas);
         setLayout(null);
-        setSize(400, 400);
+        setSize(700, 500);
         setLocationRelativeTo(null);
-        setResizable(false);
+//        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
