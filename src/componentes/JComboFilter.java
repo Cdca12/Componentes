@@ -1,4 +1,4 @@
-package ComponentesAuxiliares;
+package componentes;
 
 import com.sun.net.httpserver.Filter;
 import java.awt.*;

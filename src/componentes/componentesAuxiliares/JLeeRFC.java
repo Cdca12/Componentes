@@ -1,4 +1,4 @@
-package ComponentesAuxiliares;
+package componentes.ComponentesAuxiliares;
 
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -14,7 +14,7 @@ public class JLeeRFC extends JTextField implements FocusListener,KeyListener{
 	private boolean textoValido;
 	private Border colorDefault;
 	private Color textoColorDefault;
-	private final String HIDDEN = "R F C";
+	private final String HINT = "R F C";
 	public JLeeRFC() {
 		addFocusListener(this);
 		addKeyListener(this);
@@ -22,7 +22,7 @@ public class JLeeRFC extends JTextField implements FocusListener,KeyListener{
 		colorDefault = getBorder();
 		textoColorDefault = getForeground();
 		
-		setText(HIDDEN);
+		setText(HINT);
 		setForeground(new Color(142, 142, 142));
 	}
 	private boolean valida() {
@@ -36,7 +36,7 @@ public class JLeeRFC extends JTextField implements FocusListener,KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		setForeground(textoColorDefault);
-		if(getText().equals(HIDDEN))
+		if(getText().equals(HINT))
 			setText(null);
 	}
 	@Override
@@ -57,7 +57,7 @@ public class JLeeRFC extends JTextField implements FocusListener,KeyListener{
 	@Override
 	public void focusLost(FocusEvent e) {
 		if(getText().length()==0) {
-			setText(HIDDEN);
+			setText(HINT);
 			setForeground(new Color(142, 142, 142));
 		}
 		if(valida()) {
@@ -66,7 +66,7 @@ public class JLeeRFC extends JTextField implements FocusListener,KeyListener{
 			textoValido = true;
 			return;
 		}
-		if(getText().equals(HIDDEN)){
+		if(getText().equals(HINT)){
 			setBorder(colorDefault);
 			return;
 		}
