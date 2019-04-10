@@ -41,13 +41,13 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         add(combo);
 
         panelBotones = new JPanel(new GridLayout(0, 1, 0, 5));
-        panelBotones.setPreferredSize(new Dimension(55, 40));
+        panelBotones.setPreferredSize(new Dimension(90, 40));
 
-        btnOrdenadoOriginal = new JButton("Ori");
+        btnOrdenadoOriginal = new JButton("Original");
         btnOrdenadoOriginal.setEnabled(true);
         panelBotones.add(btnOrdenadoOriginal);
 
-        btnOrdenadoAsc = new JButton("Ord");
+        btnOrdenadoAsc = new JButton("Ordenado");
         panelBotones.add(btnOrdenadoAsc);
 
         add(panelBotones);
