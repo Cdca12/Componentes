@@ -56,7 +56,7 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
         panelOpciones.add(panelBoton);
         //PanelScroll
         
-        panelScroll = new JPanel(new GridLayout(0,1));
+        panelScroll = new JPanel(new GridLayout(10,1));
         scroll = new JScrollPane(panelScroll);
         scroll.setBorder(null);
 
@@ -86,9 +86,19 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent evt) {
-//		System.out.println(vectorCajasdeTexto.size());
-//		vectorCajasdeTexto.remove(evt);
-//		System.out.println(vectorCajasdeTexto.size());
+		int pos = buscarPos(evt);
+		panelScroll.remove(vectorCajasdeTexto.get(pos));
+		vectorCajasdeTexto.remove(pos);
+		if(vectorCajasdeTexto.size()==0)
+			habilitarRadios(true);
+		SwingUtilities.updateComponentTreeUI(panelScroll);
+	}
+	public int buscarPos(ActionEvent evt) {
+		for(int i=0;i<vectorCajasdeTexto.size();i++) {
+			if(evt.getSource() == vectorCajasdeTexto.get(i).getBtnEliminar())
+				return i;
+		}
+		return -1;
 	}
 
 }

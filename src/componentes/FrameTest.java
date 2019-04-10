@@ -64,8 +64,8 @@ public class FrameTest extends JFrame {
         //Cajas Multiples
         JCajasMultiples cajas = new JCajasMultiples();
         cajas.getComponent().setBounds(300, 50, 500, 300);
-//        cajas.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(cajas.getComponent());
+        
         
         JCombosDependientes combosDependientes = new JCombosDependientes();
         combosDependientes.setBounds(10, 400, 600, 40);
