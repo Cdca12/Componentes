@@ -53,18 +53,19 @@ public class FrameTest extends JFrame {
 
         JComboFilter otroComboFilter = new JComboFilter();
         otroComboFilter.setBounds(20, 250, 230, 50);
-        String[] datos = {
-            "Osiel", "Carlos", "Osiel", "Mario", "Omar", "Michel"
-        };
+        String[] datos = {"Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", 
+        		"Coahuila", "Colima", "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "México", "Michoacán", 
+        		"Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", 
+        		"Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas", "Ciudad de México"};
         otroComboFilter.agrega(datos);
         otroComboFilter.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         add(otroComboFilter);
 
         //Cajas Multiples
-        CajasMultiples cajas = new CajasMultiples();
-        cajas.setBounds(300, 50, 700, 300);
-        cajas.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(cajas);
+        JCajasMultiples cajas = new JCajasMultiples();
+        cajas.getComponent().setBounds(300, 50, 500, 300);
+//        cajas.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        add(cajas.getComponent());
         
         JCombosDependientes combosDependientes = new JCombosDependientes();
         combosDependientes.setBounds(10, 400, 600, 40);

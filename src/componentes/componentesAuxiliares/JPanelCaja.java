@@ -9,10 +9,12 @@ public class JPanelCaja extends JPanel {
 	private JLeeRFC rfc;
 	private JLeeNumeroTel numTel;
 	private JButton btnEliminar;
+	private int pos;
 	
-	public JPanelCaja(int tipo) {
+	public JPanelCaja(int tipo,int pos) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		creaCaja(tipo);
+		this.pos = pos;
 	}
 
 	private void creaCaja(int tipo) {
@@ -38,5 +40,11 @@ public class JPanelCaja extends JPanel {
 			add(btnEliminar);
 			break;
 		}
+	}
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+	public int getPos() {
+		return pos;
 	}
 }
