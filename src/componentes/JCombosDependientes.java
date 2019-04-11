@@ -12,18 +12,47 @@ import javax.swing.JPanel;
  */
 public class JCombosDependientes extends JPanel {
 
+    private String defaultValueCmbEstados, defaultValueCmbMunicipios, defaultValueCmbCiudades;
+
     // TEST: Memoria
     private final String[] arregloEstados = {"BC", "BCS", "SONORA", "SINALOA", "COLIMA", "NAYARIT", "JALISCO", "MICHOACAN", "OAXACA", "GUERRERO", "CHIAPAS"};
-    private final String[][] arregloCiudades = {{"Tijuana", "Mexicali", "Tecate", "Ensenada", "Rosarito"},
+    private final String[][] arregloMunicipios = {{"Tijuana", "Mexicali", "Tecate", "Ensenada", "Rosarito"},
     {"La Paz", "Los Cabos"}, {"Hermosillo", "Obregon", "Navojoa", "gUAYMAS"},
     {"Culiacán", "Mazatlán", "LosMochis", "Guasave"}};
-    String[][][] arregloColonias = {{{"Tij1", "Tij2", "Tij3", "Tij4"}, {"Mex1", "Mex2"}, {"Tec1", "Tec2", "Tec3"},
+    String[][][] arregloCiudades = {{{"Tij1", "Tij2", "Tij3", "Tij4"}, {"Mex1", "Mex2"}, {"Tec1", "Tec2", "Tec3"},
     {"Ens1", "Ens2", "Ens3"}, {"Ros1"}}, {{"Paz1", "Paz2", "Paz3"}, {"Cab1", "Cab2", "Cab3"}}, {}};
 
     private JLabel lbEstados, lbMunicipios, lbCiudades;
     private JComboBox cmbEstados, cmbMunicipios, cmbCiudades;
 
     public JCombosDependientes() {
+        this.defaultValueCmbEstados = "Seleccione";
+        this.defaultValueCmbMunicipios = "Seleccione";
+        this.defaultValueCmbCiudades = "Seleccione";
+        initComponents();
+        addListeners();
+    }
+
+    public JCombosDependientes(String defaultValueCmbEstados) {
+        this.defaultValueCmbEstados = defaultValueCmbEstados;
+        this.defaultValueCmbMunicipios = "Seleccione";
+        this.defaultValueCmbCiudades = "Seleccione";
+        initComponents();
+        addListeners();
+    }
+
+    public JCombosDependientes(String defaultValueCmbEstados, String defaultValueCmbMunicipios) {
+        this.defaultValueCmbEstados = defaultValueCmbEstados;
+        this.defaultValueCmbMunicipios = defaultValueCmbMunicipios;
+        this.defaultValueCmbCiudades = "Seleccione";
+        initComponents();
+        addListeners();
+    }
+
+    public JCombosDependientes(String defaultValueCmbEstados, String defaultValueCmbMunicipios, String defaultValueCmbCiudades) {
+        this.defaultValueCmbEstados = defaultValueCmbEstados;
+        this.defaultValueCmbMunicipios = defaultValueCmbMunicipios;
+        this.defaultValueCmbCiudades = defaultValueCmbCiudades;
         initComponents();
         addListeners();
     }
@@ -35,6 +64,9 @@ public class JCombosDependientes extends JPanel {
 
         cmbEstados = new JComboBox<>();
         cmbEstados.setPreferredSize(new Dimension(120, 25));
+        cmbEstados.insertItemAt("Seleccione", 0);
+        cmbEstados.insertItemAt(defaultValueCmbEstados, 1);
+        cmbEstados.setSelectedItem(defaultValueCmbEstados);
         add(cmbEstados);
 
         lbMunicipios = new JLabel("Municipios");
@@ -42,6 +74,9 @@ public class JCombosDependientes extends JPanel {
 
         cmbMunicipios = new JComboBox<>();
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
+        cmbMunicipios.insertItemAt("Seleccione", 0);
+        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 1);
+        cmbMunicipios.setSelectedItem(defaultValueCmbMunicipios);
         add(cmbMunicipios);
 
         lbCiudades = new JLabel("Ciudades");
@@ -49,6 +84,9 @@ public class JCombosDependientes extends JPanel {
 
         cmbCiudades = new JComboBox<>();
         cmbCiudades.setPreferredSize(new Dimension(120, 25));
+        cmbCiudades.insertItemAt("Seleccione", 0);
+        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 1);
+        cmbCiudades.setSelectedItem(defaultValueCmbCiudades);
         add(cmbCiudades);
 
     }

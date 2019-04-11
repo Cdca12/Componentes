@@ -13,6 +13,9 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
+
+// TODO: Si el texto es mayor tira excepcion, en el length. 
+// Fix: java.lang.StringIndexOutOfBoundsException: String index out of range: 7
 public class JComboFilter extends JPanel implements ActionListener, KeyListener, FocusListener {
 
     private JComboBox<String> combo;

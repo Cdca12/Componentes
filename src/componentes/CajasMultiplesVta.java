@@ -36,14 +36,14 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
         grupo = new ButtonGroup();
         rdBtnCorreo = new JRadioButton("Correos", true);
         rdBtnRFC = new JRadioButton("RFC");
-        rdBtnTelefono = new JRadioButton("Teléfonos");
+        rdBtnTelefono = new JRadioButton("TelÃ©fonos");
         grupo.add(rdBtnCorreo);
         grupo.add(rdBtnRFC);
         grupo.add(rdBtnTelefono);
         panelRadioButton.add(rdBtnCorreo);
         panelRadioButton.add(rdBtnRFC);
         panelRadioButton.add(rdBtnTelefono);
-        //PanelBotón
+        //PanelBotÃ³n
         panelBoton = new JPanel();
         panelBoton.setLayout(new FlowLayout(FlowLayout.LEFT));
         btnNuevaCaja = new JButton("Nueva Caja");
@@ -64,7 +64,7 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
         add(scroll, BorderLayout.CENTER);
     }
     JPanelCaja caja;
-    public void añadirCaja() {
+    public void aÃ±adirCaja() {
     	caja = new JPanelCaja(seleccion,vectorCajasdeTexto.size()-1);
     	caja.getBtnEliminar().addActionListener(this);
         vectorCajasdeTexto.add(caja);

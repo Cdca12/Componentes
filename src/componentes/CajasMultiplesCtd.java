@@ -21,7 +21,7 @@ public class CajasMultiplesCtd implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		if (evt.getSource() == vista.btnNuevaCaja) {
-			vista.añadirCaja();
+			vista.aÃ±adirCaja();
 			vista.habilitarRadios(false);
             return;
         }
