@@ -1,14 +1,12 @@
 package componentes;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Vector;
 
 import javax.swing.*;
 
-import componentes.ComponentesAuxiliares.JLeeCorreo;
-import componentes.ComponentesAuxiliares.JPanelCaja;
+import componentes.ComponentesAuxiliares.*;
 
 public class CajasMultiplesVta extends JPanel implements ActionListener{
 
@@ -21,14 +19,17 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
     private Vector<JPanelCaja> vectorCajasdeTexto;
     private JScrollPane scroll;
     private int seleccion;
+    private int numCajas;
+    private int cont;
 
-    public CajasMultiplesVta() {
+    public CajasMultiplesVta(int numCajas) {
         vectorCajasdeTexto = new Vector<JPanelCaja>();
         panelCaja = new JPanel();
         panelCaja.setLayout(new FlowLayout(FlowLayout.LEFT));
+        this.numCajas = numCajas;
         creaVista();
+        cont=0;
     }
-
     private void creaVista() {
         setLayout(new BorderLayout());
         this.seleccion = 0;
@@ -56,39 +57,40 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
         panelOpciones.add(panelBoton);
         //PanelScroll
         
-        panelScroll = new JPanel(new GridLayout(10,1));
+        panelScroll = new JPanel(new GridLayout(numCajas,1));
         scroll = new JScrollPane(panelScroll);
         scroll.setBorder(null);
 
         add(panelOpciones, BorderLayout.NORTH);
         add(scroll, BorderLayout.CENTER);
     }
-    JPanelCaja caja;
-    public void añadirCaja() {
-    	caja = new JPanelCaja(seleccion,vectorCajasdeTexto.size()-1);
+    public void a�adirCaja() {
+    
     	caja.getBtnEliminar().addActionListener(this);
         vectorCajasdeTexto.add(caja);
         panelScroll.add(vectorCajasdeTexto.get(vectorCajasdeTexto.size() - 1));
-
+        cont++;
+        if(cont >= numCajas)
+        	btnNuevaCaja.setEnabled(false);
+        
 		SwingUtilities.updateComponentTreeUI(panelScroll);
     }
-    public void eliminarCaja() {
-    	
-    }
-    public void habilitarRadios(boolean band) {
-    	rdBtnCorreo.setEnabled(band);
-    	rdBtnRFC.setEnabled(band);
-    	rdBtnTelefono.setEnabled(band);
-    }
+    
     public void setSeleccion(int seleccion) {
 		this.seleccion = seleccion;
 	}
-
+    public Vector<JPanelCaja> getVectorCajasdeTexto() {
+		return vectorCajasdeTexto;
+	}
+    
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		int pos = buscarPos(evt);
 		panelScroll.remove(vectorCajasdeTexto.get(pos));
 		vectorCajasdeTexto.remove(pos);
+		cont--;
+		if(cont < numCajas)
+        	btnNuevaCaja.setEnabled(true);
 		if(vectorCajasdeTexto.size()==0)
 			habilitarRadios(true);
 		SwingUtilities.updateComponentTreeUI(panelScroll);
@@ -100,5 +102,11 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
 		}
 		return -1;
 	}
+
+    public void habilitarRadios(boolean band) {
+    	rdBtnCorreo.setEnabled(band);
+    	rdBtnRFC.setEnabled(band);
+    	rdBtnTelefono.setEnabled(band);
+    }
 
 }
