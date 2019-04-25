@@ -10,6 +10,7 @@ public class CajasMultiplesCtd implements ActionListener{
 		this.vista = vista;
 		this.modelo = modelo;
 		hazEscuchas();
+		modelo.setDatos(vista.getVectorCajasdeTexto());
 	}
 	private void hazEscuchas() {
 		vista.rdBtnCorreo.addActionListener(this);
@@ -21,7 +22,7 @@ public class CajasMultiplesCtd implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		if (evt.getSource() == vista.btnNuevaCaja) {
-			vista.aÃ±adirCaja();
+			vista.añadirCaja();
 			vista.habilitarRadios(false);
             return;
         }
