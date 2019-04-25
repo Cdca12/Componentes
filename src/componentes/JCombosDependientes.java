@@ -64,8 +64,7 @@ public class JCombosDependientes extends JPanel {
 
         cmbEstados = new JComboBox<>();
         cmbEstados.setPreferredSize(new Dimension(120, 25));
-        cmbEstados.insertItemAt("Seleccione", 0);
-        cmbEstados.insertItemAt(defaultValueCmbEstados, 1);
+        cmbEstados.insertItemAt(defaultValueCmbEstados, 0);
         cmbEstados.setSelectedItem(defaultValueCmbEstados);
         add(cmbEstados);
 
@@ -74,9 +73,9 @@ public class JCombosDependientes extends JPanel {
 
         cmbMunicipios = new JComboBox<>();
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
-        cmbMunicipios.insertItemAt("Seleccione", 0);
-        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 1);
+        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
         cmbMunicipios.setSelectedItem(defaultValueCmbMunicipios);
+//        cmbMunicipios.setEnabled(false);
         add(cmbMunicipios);
 
         lbCiudades = new JLabel("Ciudades");
@@ -84,9 +83,9 @@ public class JCombosDependientes extends JPanel {
 
         cmbCiudades = new JComboBox<>();
         cmbCiudades.setPreferredSize(new Dimension(120, 25));
-        cmbCiudades.insertItemAt("Seleccione", 0);
-        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 1);
+        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 0);
         cmbCiudades.setSelectedItem(defaultValueCmbCiudades);
+//        cmbCiudades.setEnabled(false);
         add(cmbCiudades);
 
     }
