@@ -70,7 +70,6 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         cmbMunicipios = new JComboBox<>();
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
         cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
-        cmbMunicipios.setSelectedItem(defaultValueCmbMunicipios);
         add(cmbMunicipios);
 
         lbCiudades = new JLabel("Ciudades");
