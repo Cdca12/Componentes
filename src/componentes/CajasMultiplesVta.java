@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import componentes.ComponentesAuxiliares.*;
 
-public class CajasMultiplesVta extends JPanel implements ActionListener{
+public class CajasMultiplesVta extends JPanel implements ActionListener {
 
     private JPanel panelOpciones, panelRadioButton, panelBoton, panelCaja, panelScroll;
     public JButton btnNuevaCaja;
@@ -28,8 +28,9 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
         panelCaja.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.numCajas = numCajas;
         creaVista();
-        cont=0;
+        cont = 0;
     }
+
     private void creaVista() {
         setLayout(new BorderLayout());
         this.seleccion = 0;
@@ -56,57 +57,63 @@ public class CajasMultiplesVta extends JPanel implements ActionListener{
         panelOpciones.add(panelRadioButton);
         panelOpciones.add(panelBoton);
         //PanelScroll
-        
-        panelScroll = new JPanel(new GridLayout(numCajas,1));
+
+        panelScroll = new JPanel(new GridLayout(numCajas, 1));
         scroll = new JScrollPane(panelScroll);
         scroll.setBorder(null);
 
         add(panelOpciones, BorderLayout.NORTH);
         add(scroll, BorderLayout.CENTER);
     }
-    public void a�adirCaja() {
-    
-    	caja.getBtnEliminar().addActionListener(this);
-        vectorCajasdeTexto.add(caja);
+
+    public void añadirCaja() {
+//        caja.getBtnEliminar().addActionListener(this);
+//        vectorCajasdeTexto.add(caja);
         panelScroll.add(vectorCajasdeTexto.get(vectorCajasdeTexto.size() - 1));
         cont++;
-        if(cont >= numCajas)
-        	btnNuevaCaja.setEnabled(false);
-        
-		SwingUtilities.updateComponentTreeUI(panelScroll);
+        if (cont >= numCajas) {
+            btnNuevaCaja.setEnabled(false);
+        }
+
+        SwingUtilities.updateComponentTreeUI(panelScroll);
     }
-    
+
     public void setSeleccion(int seleccion) {
-		this.seleccion = seleccion;
-	}
+        this.seleccion = seleccion;
+    }
+
     public Vector<JPanelCaja> getVectorCajasdeTexto() {
-		return vectorCajasdeTexto;
-	}
-    
-	@Override
-	public void actionPerformed(ActionEvent evt) {
-		int pos = buscarPos(evt);
-		panelScroll.remove(vectorCajasdeTexto.get(pos));
-		vectorCajasdeTexto.remove(pos);
-		cont--;
-		if(cont < numCajas)
-        	btnNuevaCaja.setEnabled(true);
-		if(vectorCajasdeTexto.size()==0)
-			habilitarRadios(true);
-		SwingUtilities.updateComponentTreeUI(panelScroll);
-	}
-	public int buscarPos(ActionEvent evt) {
-		for(int i=0;i<vectorCajasdeTexto.size();i++) {
-			if(evt.getSource() == vectorCajasdeTexto.get(i).getBtnEliminar())
-				return i;
-		}
-		return -1;
-	}
+        return vectorCajasdeTexto;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+        int pos = buscarPos(evt);
+        panelScroll.remove(vectorCajasdeTexto.get(pos));
+        vectorCajasdeTexto.remove(pos);
+        cont--;
+        if (cont < numCajas) {
+            btnNuevaCaja.setEnabled(true);
+        }
+        if (vectorCajasdeTexto.size() == 0) {
+            habilitarRadios(true);
+        }
+        SwingUtilities.updateComponentTreeUI(panelScroll);
+    }
+
+    public int buscarPos(ActionEvent evt) {
+        for (int i = 0; i < vectorCajasdeTexto.size(); i++) {
+            if (evt.getSource() == vectorCajasdeTexto.get(i).getBtnEliminar()) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     public void habilitarRadios(boolean band) {
-    	rdBtnCorreo.setEnabled(band);
-    	rdBtnRFC.setEnabled(band);
-    	rdBtnTelefono.setEnabled(band);
+        rdBtnCorreo.setEnabled(band);
+        rdBtnRFC.setEnabled(band);
+        rdBtnTelefono.setEnabled(band);
     }
 
 }
