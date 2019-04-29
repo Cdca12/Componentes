@@ -25,4 +25,7 @@ public class JCajasMultiples{
 	public String[] getInfo() {
 		return m.obtenerInfo();
 	}
+	public String getInfo(int pos) {
+		return m.obtenerInfo(pos-1);
+	}
 }

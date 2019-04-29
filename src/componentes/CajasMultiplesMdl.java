@@ -17,6 +17,9 @@ public class CajasMultiplesMdl {
 		}
 		return info;
 	}
+	public String obtenerInfo(int pos) {
+		return datos.get(pos).getInfo();
+	}
 	public void setDatos(Vector<JPanelCaja> datos) {
 		this.datos = datos;
 	}
