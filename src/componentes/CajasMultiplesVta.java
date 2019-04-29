@@ -6,7 +6,7 @@ import java.util.Vector;
 
 import javax.swing.*;
 
-import componentes.ComponentesAuxiliares.*;
+import componentes.componentesAuxiliares.*;
 
 public class CajasMultiplesVta extends JPanel implements ActionListener {
 
@@ -66,9 +66,10 @@ public class CajasMultiplesVta extends JPanel implements ActionListener {
         add(scroll, BorderLayout.CENTER);
     }
 
-    public void aÃ±adirCaja() {
-//        caja.getBtnEliminar().addActionListener(this);
-//        vectorCajasdeTexto.add(caja);
+    public void añadirCaja() {
+    	JPanelCaja caja = new JPanelCaja(seleccion);
+        caja.getBtnEliminar().addActionListener(this);
+        vectorCajasdeTexto.add(caja);
         panelScroll.add(vectorCajasdeTexto.get(vectorCajasdeTexto.size() - 1));
         cont++;
         if (cont >= numCajas) {

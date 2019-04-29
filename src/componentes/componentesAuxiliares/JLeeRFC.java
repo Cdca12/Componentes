@@ -1,4 +1,4 @@
-package componentes.ComponentesAuxiliares;
+package componentes.componentesAuxiliares;
 
 import java.awt.Color;
 import java.awt.event.FocusEvent;

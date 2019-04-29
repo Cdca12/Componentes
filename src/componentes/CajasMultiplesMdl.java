@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
-import componentes.ComponentesAuxiliares.JPanelCaja;
+import componentes.componentesAuxiliares.JPanelCaja;
 
 public class CajasMultiplesMdl {
 	Vector<JPanelCaja> datos;
