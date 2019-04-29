@@ -14,7 +14,9 @@ import javax.swing.JPanel;
  */
 public class JCombosDependientes extends JPanel implements ItemListener {
 
-    private String defaultValueCmbEstados, defaultValueCmbMunicipios, defaultValueCmbCiudades;
+    private final String defaultValueCmbEstados = "Seleccione estado",
+            defaultValueCmbMunicipios = "Seleccione municipio", 
+            defaultValueCmbCiudades = "Selecciona ciudad";
 
     // TEST: Memoria
     private final String[] arregloEstados = {"BC", "BCS", "SONORA", "SINALOA", "COLIMA", "NAYARIT", "JALISCO", "MICHOACAN", "OAXACA", "GUERRERO", "CHIAPAS"};
@@ -28,68 +30,57 @@ public class JCombosDependientes extends JPanel implements ItemListener {
     private JComboBox cmbEstados, cmbMunicipios, cmbCiudades;
 
     public JCombosDependientes() {
-        this.defaultValueCmbEstados = "Seleccione estado";
-        this.defaultValueCmbMunicipios = "";
-        this.defaultValueCmbCiudades = "";
         initComponents();
         addListeners();
     }
 
     public JCombosDependientes(String defaultValueCmbEstados) {
-        this.defaultValueCmbEstados = defaultValueCmbEstados;
-        this.defaultValueCmbMunicipios = "Seleccione municipio";
-        this.defaultValueCmbCiudades = "";
-        initComponents();
-        addListeners();
+        this(); // Manda a llamar constructor por default
+        this.cmbEstados.setSelectedItem(defaultValueCmbEstados);
     }
 
     public JCombosDependientes(String defaultValueCmbEstados, String defaultValueCmbMunicipios) {
-        this.defaultValueCmbEstados = defaultValueCmbEstados;
-        this.defaultValueCmbMunicipios = defaultValueCmbMunicipios;
-        this.defaultValueCmbCiudades = "Seleccione ciudad";
-        initComponents();
-        addListeners();
+        this();
+        this.cmbEstados.setSelectedItem(defaultValueCmbEstados);
+        this.cmbMunicipios.setSelectedItem(defaultValueCmbMunicipios);
     }
 
     public JCombosDependientes(String defaultValueCmbEstados, String defaultValueCmbMunicipios, String defaultValueCmbCiudades) {
-        this.defaultValueCmbEstados = defaultValueCmbEstados;
-        this.defaultValueCmbMunicipios = defaultValueCmbMunicipios;
-        this.defaultValueCmbCiudades = defaultValueCmbCiudades;
-        initComponents();
-        addListeners();
+        this();
+        this.cmbEstados.setSelectedItem(defaultValueCmbEstados);
+        this.cmbMunicipios.setSelectedItem(defaultValueCmbMunicipios);
+        this.cmbCiudades.setSelectedItem(defaultValueCmbCiudades);
+        
     }
 
     public void initComponents() {
         setLayout(new FlowLayout());
         lbEstados = new JLabel("Estados");
         add(lbEstados);
-        lbMunicipios = new JLabel("Municipios");
-        add(lbMunicipios);
-        lbCiudades = new JLabel("Ciudades");
-        add(lbCiudades);
 
         cmbEstados = new JComboBox<>(arregloEstados);
         cmbEstados.setPreferredSize(new Dimension(120, 25));
-        cmbEstados.insertItemAt("Seleccionar estado", 0);
+        cmbEstados.insertItemAt(defaultValueCmbEstados, 0);
         cmbEstados.setSelectedIndex(0);
+        add(cmbEstados);
+        
+        lbMunicipios = new JLabel("Municipios");
+        add(lbMunicipios);
 
         cmbMunicipios = new JComboBox<>();
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
-        cmbMunicipios.insertItemAt("Seleccione municipio", 0);
-        cmbMunicipios.setSelectedItem(defaultValueCmbMunicipios);
-
-        cmbCiudades = new JComboBox<>();
-        cmbCiudades.setPreferredSize(new Dimension(120, 25));
-        cmbCiudades.insertItemAt("Seleccione ciudad", 0);
-
-        cmbEstados.setSelectedItem(defaultValueCmbEstados);
-        add(cmbEstados);
-
+        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
         cmbMunicipios.setSelectedItem(defaultValueCmbMunicipios);
         add(cmbMunicipios);
 
-        cmbCiudades.setSelectedItem(defaultValueCmbCiudades);
+        lbCiudades = new JLabel("Ciudades");
+        add(lbCiudades);
+        
+        cmbCiudades = new JComboBox<>();
+        cmbCiudades.setPreferredSize(new Dimension(120, 25));
+        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 0);
         add(cmbCiudades);
+
     }
 
     public void addListeners() {
