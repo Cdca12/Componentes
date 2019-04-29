@@ -36,6 +36,10 @@ public class JCombosDependientes extends JPanel implements ItemListener {
 
     public JCombosDependientes(String defaultValueCmbEstados) {
         this(); // Manda a llamar constructor por default
+//        this.cmbEstados.removeItemListener(this);
+//        this.cmbEstados.removeAllItems();
+//        this.cmbEstados.insertItemAt(defaultValueCmbEstados, 0);
+//        this.cmbEstados.addItemListener(this);
         this.cmbEstados.setSelectedItem(defaultValueCmbEstados);
     }
 
@@ -93,7 +97,6 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         if (evt.getStateChange() != ItemEvent.SELECTED) { // Evita que se disparen otros eventos
             return;
         }
-        
         if (evt.getSource() == cmbEstados) {
             cmbMunicipios.removeItemListener(this);
             int idEstado = cmbEstados.getSelectedIndex() - 1;
@@ -117,7 +120,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
             cmbCiudades.removeAllItems();
             
             for (int i = 0; i < arregloCiudades[idEstado][idMunicipio].length; i++) {
-                System.out.print(arregloCiudades[idEstado][idMunicipio].length);
+//                System.out.print(arregloCiudades[idEstado][idMunicipio].length);
                 cmbCiudades.addItem(arregloCiudades[idEstado][idMunicipio][i]);
             }
             

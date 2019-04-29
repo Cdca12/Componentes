@@ -22,17 +22,17 @@ public class AppTest extends JFrame implements ActionListener{
 //		setResizable(false);
 //		setLayout(null);
 		
-		añadeJCajaTexto();
-		añadirMenu();
+		aÃ±adeJCajaTexto();
+		aÃ±adirMenu();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	private void añadeJCajaTexto() {
+	private void aÃ±adeJCajaTexto() {
 		cajaMultiple = new JCajasMultiples();
 		cajaMultiple.getComponent().setBounds(30, 30, 400, 300);
 		add(cajaMultiple.getComponent(), BorderLayout.CENTER);
 	}
-	private void añadirMenu() {
+	private void aÃ±adirMenu() {
 		pnlMenu = new JPanel(new GridLayout(0, 3, 1, 1));
 		btnImprimirTodo = new JButton("Imprimir Datos");
 		btnImprimirTodo.addActionListener(this);
