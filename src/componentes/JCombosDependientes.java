@@ -152,6 +152,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
             int posicion = obtenerPosicion(archivoMunicipios, seleccion, LONGITUD_MUNICIPIO);
             try {
                 archivoMunicipios.seek((posicion - 1) * LONGITUD_MUNICIPIO);
+                archivoMunicipios.readUTF();
                 id = archivoMunicipios.readUTF();
             } catch (IOException ex) {
                 System.out.println("Error al cargar ciudades");
