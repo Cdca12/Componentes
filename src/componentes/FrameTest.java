@@ -73,17 +73,17 @@ public class FrameTest extends JFrame {
         combosDependientesA.setBorder(BorderFactory.createLineBorder(Color.RED));
         add(combosDependientesA);
 
-        JCombosDependientes combosDependientesB = new JCombosDependientes("BC");
+        JCombosDependientes combosDependientesB = new JCombosDependientes("Aguascalientes");
         combosDependientesB.setBounds(10, 460, 600, 40);
         combosDependientesB.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         add(combosDependientesB);
 
-        JCombosDependientes combosDependientesC = new JCombosDependientes("BC", "Tijuana");
+        JCombosDependientes combosDependientesC = new JCombosDependientes("Aguascalientes", "cosio");
         combosDependientesC.setBounds(10, 520, 600, 40);
         combosDependientesC.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         add(combosDependientesC);
 
-        JCombosDependientes combosDependientesD = new JCombosDependientes("BC", "Tijuana", "Tij1");
+        JCombosDependientes combosDependientesD = new JCombosDependientes("Aguascalientes", "cosio", "Ciudad1");
         combosDependientesD.setBounds(10, 580, 600, 40);
         combosDependientesD.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(combosDependientesD);

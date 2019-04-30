@@ -89,7 +89,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
 
         cmbMunicipios = new JComboBox<>();
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
-        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
+//        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
         add(cmbMunicipios);
 
         lbCiudades = new JLabel("Ciudades");
@@ -97,7 +97,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
 
         cmbCiudades = new JComboBox<>();
         cmbCiudades.setPreferredSize(new Dimension(120, 25));
-        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 0);
+//        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 0);
         add(cmbCiudades);
 
     }
@@ -116,6 +116,11 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         String id = "", seleccion = (String) evt.getItem();
         if (evt.getSource() == cmbEstados) {
             cmbMunicipios.removeItemListener(this);
+            if (seleccion.equals(defaultValueCmbEstados)) {
+                cmbMunicipios.removeAllItems();
+                cmbCiudades.removeAllItems();
+                return;
+            }
             int posicion = obtenerPosicion(archivoEstados, seleccion, LONGITUD_ESTADO);
             try {
                 archivoEstados.seek((posicion - 1) * LONGITUD_ESTADO);
@@ -134,6 +139,10 @@ public class JCombosDependientes extends JPanel implements ItemListener {
 
         if (evt.getSource() == cmbMunicipios) {
             cmbCiudades.removeItemListener(this);
+            if (seleccion.equals(defaultValueCmbMunicipios)) {
+                cmbCiudades.removeAllItems();
+                return;
+            }
             int posicion = obtenerPosicion(archivoMunicipios, seleccion, LONGITUD_MUNICIPIO);
             try {
                 archivoMunicipios.seek((posicion - 1) * LONGITUD_MUNICIPIO);
