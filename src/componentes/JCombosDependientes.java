@@ -1,5 +1,6 @@
 package componentes;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ItemEvent;
@@ -71,9 +72,9 @@ public class JCombosDependientes extends JPanel implements ItemListener {
     public void initComponents() {
         try {
             // Cargar archivos
-            archivoEstados = new RandomAccessFile("./src/componentes/Files/estados.dat", "rw");
-            archivoMunicipios = new RandomAccessFile("./src/componentes/Files/municipios.dat", "rw");
-            archivoCiudades = new RandomAccessFile("./src/componentes/Files/ciudades.dat", "rw");
+            archivoEstados = new RandomAccessFile("./src/componentes/Files/ESTADOS.dat", "rw");
+            archivoMunicipios = new RandomAccessFile("./src/componentes/Files/MUNICIPIOS.dat", "rw");
+            archivoCiudades = new RandomAccessFile("./src/componentes/Files/CIUDADES.dat", "rw");
         } catch (FileNotFoundException ex) {
             System.out.println("Error al cargar los archivos");
         }
@@ -86,6 +87,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         cmbEstados.setPreferredSize(new Dimension(120, 25));
         cmbEstados.insertItemAt(defaultValueCmbEstados, 0);
         cmbEstados.setSelectedIndex(0);
+//        cmbEstados.setBackground(Color.WHITE);
         add(cmbEstados);
 
         cargarEstados();
@@ -96,6 +98,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         cmbMunicipios = new JComboBox<>();
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
 //        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
+//        cmbMunicipios.setBackground(Color.WHITE);
         add(cmbMunicipios);
 
         lbCiudades = new JLabel("Ciudades");
@@ -104,6 +107,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         cmbCiudades = new JComboBox<>();
         cmbCiudades.setPreferredSize(new Dimension(120, 25));
 //        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 0);
+//        cmbCiudades.setBackground(Color.WHITE);
         add(cmbCiudades);
 
     }

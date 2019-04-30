@@ -66,7 +66,7 @@ public class CajasMultiplesVta extends JPanel implements ActionListener {
         add(scroll, BorderLayout.CENTER);
     }
 
-    public void añadirCaja() {
+    public void aÃ±adirCaja() {
     	JPanelCaja caja = new JPanelCaja(seleccion);
         caja.getBtnEliminar().addActionListener(this);
         vectorCajasdeTexto.add(caja);
