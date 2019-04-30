@@ -27,14 +27,6 @@ public class JCombosDependientes extends JPanel implements ItemListener {
             LONGITUD_MUNICIPIO = 60,
             LONGITUD_CIUDAD = 21;
 
-    // TEST: Memoria
-    private final String[] arregloEstados = {"BC", "BCS", "SONORA", "SINALOA", "COLIMA", "NAYARIT", "JALISCO", "MICHOACAN", "OAXACA", "GUERRERO", "CHIAPAS"};
-    private final String[][] arregloMunicipios = {{"Tijuana", "Mexicali", "Tecate", "Ensenada", "Rosarito"},
-    {"La Paz", "Los Cabos"}, {"Hermosillo", "Obregon", "Navojoa", "gUAYMAS"},
-    {"Culiacán", "Mazatlán", "LosMochis", "Guasave"}};
-    String[][][] arregloCiudades = {{{"Tij1", "Tij2", "Tij3", "Tij4"}, {"Mex1", "Mex2"}, {"Tec1", "Tec2", "Tec3"},
-    {"Ens1", "Ens2", "Ens3"}, {"Ros1"}}, {{"Paz1", "Paz2", "Paz3"}, {"Cab1", "Cab2", "Cab3"}}, {}};
-
     private JLabel lbEstados, lbMunicipios, lbCiudades;
     private JComboBox cmbEstados, cmbMunicipios, cmbCiudades;
 
