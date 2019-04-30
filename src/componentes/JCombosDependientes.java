@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * @author Carlos Contreras
  */
 public class JCombosDependientes extends JPanel implements ItemListener {
-
+        // TODO: Ciudades
     private RandomAccessFile archivoEstados, archivoMunicipios, archivoCiudades;
     private final String defaultValueCmbEstados = "Seleccione estado",
             defaultValueCmbMunicipios = "Seleccione municipio",
@@ -48,22 +48,22 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         this.cmbEstados.removeAllItems();
         this.cmbEstados.addItem(defaultValueCmbEstados);
         this.cmbEstados.removeItemListener(this);
-        
+
         this.cmbMunicipios.removeAllItems();
         this.cmbMunicipios.addItem(defaultValueCmbMunicipios);
         this.cmbMunicipios.removeItemListener(this);
-        
+
     }
 
     public JCombosDependientes(String defaultValueCmbEstados, String defaultValueCmbMunicipios, String defaultValueCmbCiudades) {
         this();
         this.cmbEstados.removeAllItems();
         this.cmbEstados.addItem(defaultValueCmbEstados);
-        
+
         this.cmbMunicipios.removeAllItems();
         this.cmbMunicipios.addItem(defaultValueCmbMunicipios);
         this.cmbMunicipios.removeItemListener(this);
-        
+
         this.cmbCiudades.removeAllItems();
         this.cmbCiudades.addItem(defaultValueCmbCiudades);
         this.cmbCiudades.removeItemListener(this);
