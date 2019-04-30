@@ -35,7 +35,7 @@ public class FrameTest extends JFrame {
         comboFilter.agrega("Paul");
         comboFilter.agrega("Paul");
         comboFilter.agrega("Paul");
-        comboFilter.setBorder(BorderFactory.createLineBorder(Color.RED));
+//        comboFilter.setBorder(BorderFactory.createLineBorder(Color.RED));
         add(comboFilter);
 
         JComboFilter nuevoComboFilter = new JComboFilter();
@@ -49,7 +49,7 @@ public class FrameTest extends JFrame {
         vectorDatos.add("Michel");
         vectorDatos.add("Pero");
         nuevoComboFilter.agrega(vectorDatos);
-        nuevoComboFilter.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        nuevoComboFilter.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         add(nuevoComboFilter);
 
         JComboFilter otroComboFilter = new JComboFilter();
@@ -59,7 +59,7 @@ public class FrameTest extends JFrame {
             "Morelos", "Nayarit", "Nuevo Leon", "Oaxaca", "Puebla", "Queretaro", "Quintana Roo", "San Luis Potosi",
             "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatan", "Zacatecas", "Ciudad de Mexico"};
         otroComboFilter.agrega(datos);
-        otroComboFilter.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+//        otroComboFilter.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         add(otroComboFilter);
 
         //Cajas Multiples
@@ -70,22 +70,22 @@ public class FrameTest extends JFrame {
         // CombosDependientes
         JCombosDependientes combosDependientesA = new JCombosDependientes();
         combosDependientesA.setBounds(10, 400, 600, 40);
-        combosDependientesA.setBorder(BorderFactory.createLineBorder(Color.RED));
+//        combosDependientesA.setBorder(BorderFactory.createLineBorder(Color.RED));
         add(combosDependientesA);
 
         JCombosDependientes combosDependientesB = new JCombosDependientes("Aguascalientes");
         combosDependientesB.setBounds(10, 460, 600, 40);
-        combosDependientesB.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        combosDependientesB.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         add(combosDependientesB);
 
         JCombosDependientes combosDependientesC = new JCombosDependientes("Aguascalientes", "cosio");
         combosDependientesC.setBounds(10, 520, 600, 40);
-        combosDependientesC.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+//        combosDependientesC.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         add(combosDependientesC);
 
         JCombosDependientes combosDependientesD = new JCombosDependientes("Aguascalientes", "cosio", "Ciudad1");
         combosDependientesD.setBounds(10, 580, 600, 40);
-        combosDependientesD.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//        combosDependientesD.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(combosDependientesD);
 
         setVisible(true);
