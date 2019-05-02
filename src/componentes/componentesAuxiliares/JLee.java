@@ -1,4 +1,4 @@
-package componentes;
+package componentes.componentesAuxiliares;
 
 
 import java.awt.Color;

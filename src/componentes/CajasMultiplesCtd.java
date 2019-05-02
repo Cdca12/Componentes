@@ -2,7 +2,7 @@ package componentes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import componentes.componentesAuxiliares.*;
 public class CajasMultiplesCtd implements ActionListener {
 
     CajasMultiplesVta vista;
@@ -26,7 +26,7 @@ public class CajasMultiplesCtd implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent evt) {
         if (evt.getSource() == vista.btnNuevaCaja) {
-            vista.aÃ±adirCaja();
+            vista.añadirCaja();
             vista.habilitarRadios(false);
             return;
         }
