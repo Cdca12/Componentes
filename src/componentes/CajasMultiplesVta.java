@@ -6,7 +6,6 @@ import java.util.Vector;
 
 import javax.swing.*;
 
-import componentes.componentesAuxiliares.*;
 
 public class CajasMultiplesVta extends JPanel implements ActionListener {
 

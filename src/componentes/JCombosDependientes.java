@@ -91,9 +91,9 @@ public class JCombosDependientes extends JPanel implements ItemListener {
     private void initComponents() {
         try {
             // Cargar archivos
-            archivoEstados = new RandomAccessFile("./src/componentes/Files/ESTADOS.dat", "rw");
-            archivoMunicipios = new RandomAccessFile("./src/componentes/Files/MUNICIPIOS.dat", "rw");
-            archivoCiudades = new RandomAccessFile("./src/componentes/Files/CIUDADES.dat", "rw");
+            archivoEstados = new RandomAccessFile("./src/componentes/ESTADOS.dat", "rw");
+            archivoMunicipios = new RandomAccessFile("./src/componentes/MUNICIPIOS.dat", "rw");
+            archivoCiudades = new RandomAccessFile("./src/componentes/CIUDADES.dat", "rw");
         } catch (FileNotFoundException ex) {
             System.out.println("Error al cargar los archivos");
         }

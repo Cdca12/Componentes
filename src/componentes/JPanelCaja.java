@@ -1,4 +1,4 @@
-package componentes.componentesAuxiliares;
+package componentes;
 
 import java.awt.*;
 
@@ -18,7 +18,7 @@ public class JPanelCaja extends JPanel {
 
     private void creaCaja(int tipo) {
         btnEliminar = new JButton();
-        btnEliminar.setIcon(AjustarImagen("./src/componentes/Files/delete-icon.png", 25, 25));
+        btnEliminar.setIcon(AjustarImagen("./src/componentes/delete-icon.png", 25, 25));
         btnEliminar.setPreferredSize(new Dimension(25,25));
         btnEliminar.setContentAreaFilled(false);     
         btnEliminar.setBorderPainted(false); // Elimina el recuadro que rodea al boton
