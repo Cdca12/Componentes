@@ -82,6 +82,11 @@ public class JCombosDependientes extends JPanel implements ItemListener {
     public String getCiudad() {
         return (String) cmbCiudades.getSelectedItem();
     }
+    
+    public String[] getDatos() {
+        String[] datos = {((String) cmbEstados.getSelectedItem()), ((String) cmbMunicipios.getSelectedItem()), ((String) cmbCiudades.getSelectedItem())};
+        return datos;
+    }
 
     private void initComponents() {
         try {

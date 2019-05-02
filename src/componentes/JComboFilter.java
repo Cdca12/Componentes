@@ -33,39 +33,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         hazEscuchas();
     }
 
-    private void initInterface() {
-        setLayout(new FlowLayout());
-
-        combo = new JComboBox<>();
-//        combo.addItem("Selecciona");
-        combo.setPreferredSize(new Dimension(120, 40));
-        combo.setEditable(true);
-        editorTexto = (JTextComponent) combo.getEditor().getEditorComponent();
-        add(combo);
-
-        panelBotones = new JPanel(new GridLayout(0, 1, 0, 5));
-        panelBotones.setPreferredSize(new Dimension(90, 40));
-
-        btnOrdenadoOriginal = new JButton("Original");
-//        btnOrdenadoOriginal.setEnabled(true);
-        panelBotones.add(btnOrdenadoOriginal);
-
-        btnOrdenadoAsc = new JButton("Ordenado");
-        panelBotones.add(btnOrdenadoAsc);
-
-        add(panelBotones);
-
-        datosOriginal = new Vector<String>();
-
-    }
-
-    private void hazEscuchas() {
-        btnOrdenadoAsc.addActionListener(this);
-        btnOrdenadoOriginal.addActionListener(this);
-        editorTexto.addKeyListener(this);
-        editorTexto.addFocusListener(this);
-    }
-
+    // Métodos de interfaz
     public void agrega(String dato) {
         combo.addItem(dato);
         datosOriginal.add(dato);
@@ -86,7 +54,46 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         combo.setModel(comboModel);
         datosOriginal = vectorDatos;
     }
+    
+    public String getText() {
+        return editorTexto.getText();
+    }
+    
+    public String[] getDatos() {
+        return (String[]) datosOriginal.toArray(new String[datosOriginal.size()]);
+    }
+    
+    private void initInterface() {
+        setLayout(new FlowLayout());
 
+        combo = new JComboBox<>();
+        combo.setPreferredSize(new Dimension(120, 40));
+        combo.setEditable(true);
+        editorTexto = (JTextComponent) combo.getEditor().getEditorComponent();
+        add(combo);
+
+        panelBotones = new JPanel(new GridLayout(0, 1, 0, 5));
+        panelBotones.setPreferredSize(new Dimension(90, 40));
+
+        btnOrdenadoOriginal = new JButton("Original");
+        panelBotones.add(btnOrdenadoOriginal);
+
+        btnOrdenadoAsc = new JButton("Ordenado");
+        panelBotones.add(btnOrdenadoAsc);
+
+        add(panelBotones);
+
+        datosOriginal = new Vector<String>();
+
+    }
+
+    private void hazEscuchas() {
+        btnOrdenadoAsc.addActionListener(this);
+        btnOrdenadoOriginal.addActionListener(this);
+        editorTexto.addKeyListener(this);
+        editorTexto.addFocusListener(this);
+    }
+    
     private void ordenaDatos() {
         datosOrdenado = new Vector<String>(datosOriginal);
         Collections.sort(datosOrdenado);

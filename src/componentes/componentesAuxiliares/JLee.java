@@ -69,6 +69,7 @@ public class JLee extends JTextField implements FocusListener,KeyListener{
 	@Override
 	public void focusGained(FocusEvent arg0) {
 		setBorder(BorderFactory.createLineBorder(Color.BLUE));
+                setCaretPosition(0); // Posiciona cursor al inicio
 		
 	}
 	@Override
