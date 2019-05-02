@@ -69,8 +69,21 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         this.cmbCiudades.addItem(defaultValueCmbCiudades);
         this.cmbCiudades.removeItemListener(this);
     }
+    
+    // Métodos de interfaz
+    public String getEstado() {
+        return (String) cmbEstados.getSelectedItem();
+    }
+    
+    public String getMunicipio() {
+        return (String) cmbMunicipios.getSelectedItem();
+    }
+    
+    public String getCiudad() {
+        return (String) cmbCiudades.getSelectedItem();
+    }
 
-    public void initComponents() {
+    private void initComponents() {
         try {
             // Cargar archivos
             archivoEstados = new RandomAccessFile("./src/componentes/Files/ESTADOS.dat", "rw");
@@ -98,8 +111,6 @@ public class JCombosDependientes extends JPanel implements ItemListener {
 
         cmbMunicipios = new JComboBox<>();
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
-//        cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
-//        cmbMunicipios.setBackground(Color.WHITE);
         add(cmbMunicipios);
 
         lbCiudades = new JLabel("Ciudades");
@@ -107,13 +118,11 @@ public class JCombosDependientes extends JPanel implements ItemListener {
 
         cmbCiudades = new JComboBox<>();
         cmbCiudades.setPreferredSize(new Dimension(120, 25));
-//        cmbCiudades.insertItemAt(defaultValueCmbCiudades, 0);
-//        cmbCiudades.setBackground(Color.WHITE);
         add(cmbCiudades);
 
     }
 
-    public void addListeners() {
+    private void addListeners() {
         cmbEstados.addItemListener(this);
         cmbMunicipios.addItemListener(this);
         cmbCiudades.addItemListener(this);
@@ -173,7 +182,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         }
     }
 
-    public void cargarEstados() {
+    private void cargarEstados() {
         try {
             int lengthArchivoEstados = (int) (archivoEstados.length() / LONGITUD_ESTADO);
             for (int i = 0; i < lengthArchivoEstados; i++) {
@@ -185,7 +194,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         }
     }
 
-    public void cargarMunicipios(String idEstado) {
+    private void cargarMunicipios(String idEstado) {
         String comparadorEstado;
         boolean bandera = false;
         try {
@@ -208,7 +217,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         }
     }
 
-    public void cargarCiudades(String idEstado, String idMunicipio) {
+    private void cargarCiudades(String idEstado, String idMunicipio) {
         String comparadorEstado, comparadorMunicipio;
         boolean bandera = false;
         try {
@@ -232,7 +241,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         }
     }
 
-    public int obtenerPosicion(RandomAccessFile archivo, String cadena, int longitud) {
+    private int obtenerPosicion(RandomAccessFile archivo, String cadena, int longitud) {
         int posicionador;
         if (archivo == archivoEstados) {
             posicionador = 4;
@@ -255,4 +264,6 @@ public class JCombosDependientes extends JPanel implements ItemListener {
             return -1;
         }
     }
+    
+    
 }

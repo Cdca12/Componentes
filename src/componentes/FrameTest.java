@@ -58,7 +58,7 @@ public class FrameTest extends JFrame {
             "Coahuila", "Colima", "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Mexico", "Michoacan",
             "Morelos", "Nayarit", "Nuevo Leon", "Oaxaca", "Puebla", "Queretaro", "Quintana Roo", "San Luis Potosi",
             "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatan", "Zacatecas", "Ciudad de Mexico"};
-        
+
         otroComboFilter.agrega(datos);
 //        otroComboFilter.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         add(otroComboFilter);
@@ -88,6 +88,10 @@ public class FrameTest extends JFrame {
         combosDependientesD.setBounds(10, 580, 600, 40);
 //        combosDependientesD.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(combosDependientesD);
+
+        System.out.println("Estado = " + combosDependientesD.getEstado() + ""
+                + "\nMunicipio = " + combosDependientesD.getMunicipio()
+                + "\nCiudad = " + combosDependientesD.getCiudad());
 
         setVisible(true);
     }
