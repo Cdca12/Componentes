@@ -22,12 +22,14 @@ public class FrameTest extends JFrame {
 
     public FrameTest() {
         setLayout(null);
-        setSize(700, 700);
+        setSize(1100, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+//        setExtendedState(MAXIMIZED_BOTH);
         setResizable(false);
         
         // Primer componente: CombosFiltrados
+        // Test 1: Vacío y añadiendo uno por uno
         JComboFilter comboFilter = new JComboFilter();
         comboFilter.setBounds(20, 20, 230, 50);
         comboFilter.agrega("Osiel");
@@ -69,9 +71,9 @@ public class FrameTest extends JFrame {
         // Test 4: Obtener información
         System.out.println("---------------------------------------\n\t  Test JComboFilter\n---------------------------------------");
         System.out.println("Individualmente:");
-        System.out.println("PrimerCombo Filter: " + comboFilter.getText()
-                + "\nSegundo Combo Filter: " + nuevoComboFilter.getText()
-                + "\nTercer Combo Filter: " + otroComboFilter.getText());
+        System.out.println("PrimerComboFilter: " + comboFilter.getText()
+                + "\nSegundo ComboFilter: " + nuevoComboFilter.getText()
+                + "\nTercer ComboFilter: " + otroComboFilter.getText());
         // Todos los datos
         System.out.println("\nObteniendo datos como arreglo:");
         String[] datosPrimerComponente = otroComboFilter.getDatos();
@@ -87,9 +89,9 @@ public class FrameTest extends JFrame {
         add(cajasMultiples.getComponent());
         
         // Test 2: Número de cajas máximo como parámetros
-//        cajasMultiples = new JCajasMultiples(5);
-//        cajasMultiples.getComponent().setBounds(300, 50, 380, 300);
-//        add(cajasMultiples.getComponent());
+        JCajasMultiples otroCajasMultiples = new JCajasMultiples(5);
+        otroCajasMultiples.getComponent().setBounds(700, 50, 380, 300);
+        add(otroCajasMultiples.getComponent());
 
         // Test 3: Obtener información. Ver consola.
 
@@ -97,27 +99,42 @@ public class FrameTest extends JFrame {
         // CombosDependientes 
         // Test 1: Normal
         JCombosDependientes combosDependientesA = new JCombosDependientes();
-        // Test 2: Añadir componente en Vertical
-//        combosDependientesA.setBounds(10, 400, 200, 200); 
         combosDependientesA.setBounds(10, 400, 600, 40);
         add(combosDependientesA);
 
-        // Test 3: Constructor con Estado
+        // Test 2: Constructor con Estado
         JCombosDependientes combosDependientesB = new JCombosDependientes("Aguascalientes");
         combosDependientesB.setBounds(10, 460, 600, 40);
         add(combosDependientesB);
 
-        // Test 4: Constructor con Estado, Municipio
+        // Test 3: Constructor con Estado, Municipio
         JCombosDependientes combosDependientesC = new JCombosDependientes("Aguascalientes", "cosio");
         combosDependientesC.setBounds(10, 520, 600, 40);
         add(combosDependientesC);
 
-        // Test 5: Constructor con Estado, Municipio, Ciudad
+        // Test 4: Constructor con Estado, Municipio, Ciudad
         JCombosDependientes combosDependientesD = new JCombosDependientes("Aguascalientes", "cosio", "CdCos3");
         combosDependientesD.setBounds(10, 580, 600, 40);
         add(combosDependientesD);
+        
+        // Test 5: Añadir componente en Vertical
+        JCombosDependientes otrocombosDependientesA = new JCombosDependientes();
+        otrocombosDependientesA.setBounds(630, 400, 200, 100); 
+        add(otrocombosDependientesA);
+        
+        JCombosDependientes otrocombosDependientesB = new JCombosDependientes("Baja California");
+        otrocombosDependientesB.setBounds(850, 400, 200, 100); 
+        add(otrocombosDependientesB);
+        
+        JCombosDependientes otrocombosDependientesC = new JCombosDependientes("Sinaloa", "Culiacan");
+        otrocombosDependientesC.setBounds(630, 530, 200, 100); 
+        add(otrocombosDependientesC);
+        
+        JCombosDependientes otrocombosDependientesD = new JCombosDependientes("Nuevo Leon", "Monterrey", "CdMon1");
+        otrocombosDependientesD.setBounds(850, 530, 200, 100); 
+        add(otrocombosDependientesD);
 
-        // Test 6: Obtener información
+        // Test 5: Obtener información
         System.out.println("---------------------------------------\n\t  Test JCombosDependientes\n---------------------------------------");
         System.out.println("Individualmente:");
         System.out.println("Estado = " + combosDependientesD.getEstado() + ""
