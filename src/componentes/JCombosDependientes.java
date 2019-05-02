@@ -19,7 +19,8 @@ import javax.swing.JPanel;
  * @author Carlos Contreras
  */
 public class JCombosDependientes extends JPanel implements ItemListener {
-        // TODO: Ciudades
+    // TODO: Ciudades
+
     private RandomAccessFile archivoEstados, archivoMunicipios, archivoCiudades;
     private final String defaultValueCmbEstados = "Seleccione estado",
             defaultValueCmbMunicipios = "Seleccione municipio",
@@ -123,7 +124,8 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         if (evt.getStateChange() != ItemEvent.SELECTED) { // Evita que se disparen otros eventos
             return;
         }
-        String id = "", seleccion = (String) evt.getItem();
+        String idEstado = "", idMunicipio = "", seleccion = (String) evt.getItem();
+        int posicionEstado, posicionMunicipio;
         if (evt.getSource() == cmbEstados) {
             cmbMunicipios.removeItemListener(this);
             if (seleccion.equals(defaultValueCmbEstados)) {
@@ -131,41 +133,42 @@ public class JCombosDependientes extends JPanel implements ItemListener {
                 cmbCiudades.removeAllItems();
                 return;
             }
-            int posicion = obtenerPosicion(archivoEstados, seleccion, LONGITUD_ESTADO);
+            posicionEstado = obtenerPosicion(archivoEstados, seleccion, LONGITUD_ESTADO);
             try {
-                archivoEstados.seek((posicion - 1) * LONGITUD_ESTADO);
-                id = archivoEstados.readUTF();
+                archivoEstados.seek((posicionEstado - 1) * LONGITUD_ESTADO);
+                idEstado = archivoEstados.readUTF();
             } catch (IOException ex) {
                 System.out.println("Error al cargar municipios");
             }
             cmbMunicipios.removeAllItems();
             cmbCiudades.removeAllItems();
-            cargarMunicipios(id);
+            cargarMunicipios(idEstado);
             cmbMunicipios.insertItemAt(defaultValueCmbMunicipios, 0);
-            cmbMunicipios.setSelectedIndex(0);
             cmbMunicipios.addItemListener(this);
+            cmbMunicipios.setSelectedIndex(0);
             return;
         }
-
         if (evt.getSource() == cmbMunicipios) {
-            cmbCiudades.removeItemListener(this);
             if (seleccion.equals(defaultValueCmbMunicipios)) {
                 cmbCiudades.removeAllItems();
                 return;
             }
-            int posicion = obtenerPosicion(archivoMunicipios, seleccion, LONGITUD_MUNICIPIO);
+            posicionEstado = obtenerPosicion(archivoEstados, (String) cmbEstados.getSelectedItem(), LONGITUD_ESTADO);
+            posicionMunicipio = obtenerPosicion(archivoMunicipios, seleccion, LONGITUD_MUNICIPIO);
             try {
-                archivoMunicipios.seek((posicion - 1) * LONGITUD_MUNICIPIO);
+                archivoEstados.seek((posicionEstado - 1) * LONGITUD_ESTADO);
+                idEstado = archivoEstados.readUTF();
+                archivoMunicipios.seek((posicionMunicipio - 1) * LONGITUD_MUNICIPIO);
                 archivoMunicipios.readUTF();
-                id = archivoMunicipios.readUTF();
+                idMunicipio = archivoMunicipios.readUTF();
             } catch (IOException ex) {
                 System.out.println("Error al cargar ciudades");
             }
             cmbCiudades.removeAllItems();
-            cargarCiudades(id);
-            cmbCiudades.insertItemAt(defaultValueCmbCiudades, 0);
+            cargarCiudades(idEstado, idMunicipio);
+            
+            cmbCiudades.insertItemAt(defaultValueCmbMunicipios, 0);
             cmbCiudades.setSelectedIndex(0);
-            cmbCiudades.addItemListener(this);
             return;
         }
     }
@@ -183,14 +186,14 @@ public class JCombosDependientes extends JPanel implements ItemListener {
     }
 
     public void cargarMunicipios(String idEstado) {
-        String comparador;
+        String comparadorEstado;
         boolean bandera = false;
         try {
             int lengthArchivoMunicipios = (int) (archivoMunicipios.length() / LONGITUD_MUNICIPIO);
             for (int i = 0; i < lengthArchivoMunicipios; i++) {
                 archivoMunicipios.seek(i * LONGITUD_MUNICIPIO);
-                comparador = archivoMunicipios.readUTF();
-                if (!comparador.equals(idEstado)) {
+                comparadorEstado = archivoMunicipios.readUTF();
+                if (!comparadorEstado.equals(idEstado)) {
                     if (bandera) { // Si la bandera es true, terminar la búsqueda
                         return;
                     }
@@ -205,16 +208,16 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         }
     }
 
-    public void cargarCiudades(String idMunicipio) {
-        String comparador;
+    public void cargarCiudades(String idEstado, String idMunicipio) {
+        String comparadorEstado, comparadorMunicipio;
         boolean bandera = false;
         try {
             int lengthArchivoCiudades = (int) (archivoCiudades.length() / LONGITUD_CIUDAD);
             for (int i = 0; i < lengthArchivoCiudades; i++) {
                 archivoCiudades.seek(i * LONGITUD_CIUDAD);
-                archivoCiudades.readUTF(); // Lectura en falso para posicionarse
-                comparador = archivoCiudades.readUTF();
-                if (!comparador.equals(idMunicipio)) {
+                comparadorEstado = archivoCiudades.readUTF();
+                comparadorMunicipio = archivoCiudades.readUTF();
+                if (!comparadorEstado.equals(idEstado) || !comparadorMunicipio.equals(idMunicipio)) {
                     if (bandera) { // Si la bandera es true, terminar la búsqueda
                         return;
                     }
@@ -235,7 +238,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
             posicionador = 4;
         } else if (archivo == archivoMunicipios) {
             posicionador = 8;
-        } else {
+        } else { // Ciudades
             posicionador = 12;
         }
         try {

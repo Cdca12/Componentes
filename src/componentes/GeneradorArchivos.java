@@ -81,8 +81,8 @@ public class GeneradorArchivos {
                     ciudades.writeUTF(MUNICIPIOS[i].substring(0, 2));
                     ciudades.writeUTF(MUNICIPIOS[i].substring(2, 4));
                     ciudades.writeUTF("0" + (j + ""));
-                    ciudades.writeUTF(PonBlancos("Cd "+MUNICIPIOS[i].substring(4,7), 6)+(j+""));
-//                    ciudades.writeUTF(PonBlancos("Cd"+ MUNICIPIOS[i].toUpperCase().charAt(4) + MUNICIPIOS[i].substring(5,7), 5)+(j+" "));
+//                    ciudades.writeUTF(PonBlancos("Cd "+MUNICIPIOS[i].substring(4,7), 6)+(j+""));
+                    ciudades.writeUTF(PonBlancos("Cd"+ MUNICIPIOS[i].toUpperCase().charAt(4) + MUNICIPIOS[i].substring(5,7), 5)+(j+" "));
 
                 }
             }
