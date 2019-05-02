@@ -58,6 +58,7 @@ public class FrameTest extends JFrame {
             "Coahuila", "Colima", "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Mexico", "Michoacan",
             "Morelos", "Nayarit", "Nuevo Leon", "Oaxaca", "Puebla", "Queretaro", "Quintana Roo", "San Luis Potosi",
             "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatan", "Zacatecas", "Ciudad de Mexico"};
+        
         otroComboFilter.agrega(datos);
 //        otroComboFilter.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         add(otroComboFilter);

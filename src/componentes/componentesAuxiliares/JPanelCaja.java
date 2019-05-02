@@ -6,9 +6,7 @@ import javax.swing.*;
 
 public class JPanelCaja extends JPanel {
 
-    private JLeeCorreo correo;
-    private JLeeRFC rfc;
-    private JLeeNumeroTel numTel;
+    private JLee textField;
     private JButton btnEliminar;
     private int tipo;
 
@@ -26,37 +24,28 @@ public class JPanelCaja extends JPanel {
         btnEliminar.setBorderPainted(false); // Elimina el recuadro que rodea al boton
         switch (tipo) {
             case 0://Correo
-                correo = new JLeeCorreo();
-                correo.setPreferredSize(new Dimension(300, 35));
-                add(correo);
+            	textField = new JLee(1);
+            	textField.setPreferredSize(new Dimension(300, 35));
+                add(textField);
                 add(btnEliminar);
                 break;
             case 1://RFC
-                rfc = new JLeeRFC();
-                rfc.setPreferredSize(new Dimension(300, 35));
-                add(rfc);
+            	textField = new JLee(2);
+            	textField.setPreferredSize(new Dimension(300, 35));
+                add(textField);
                 add(btnEliminar);
                 break;
             case 2://NumTel
-                numTel = new JLeeNumeroTel();
-                numTel.setPreferredSize(new Dimension(300, 35));
-                add(numTel);
+            	textField = new JLee(3);
+            	textField.setPreferredSize(new Dimension(300, 35));
+                add(textField);
                 add(btnEliminar);
                 break;
         }
     }
 
     public String getInfo() {
-        if (tipo == 0) {
-            return correo.getTextValidado();
-        }
-        if (tipo == 1) {
-            return rfc.getTextValidado();
-        }
-        if (tipo == 2) {
-            return "" + numTel.getTextValidado();
-        }
-        return "";
+    	return textField.getTextValidado();
     }
 
     public JButton getBtnEliminar() {
