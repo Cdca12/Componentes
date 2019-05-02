@@ -47,7 +47,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         panelBotones.setPreferredSize(new Dimension(90, 40));
 
         btnOrdenadoOriginal = new JButton("Original");
-        btnOrdenadoOriginal.setEnabled(true);
+//        btnOrdenadoOriginal.setEnabled(true);
         panelBotones.add(btnOrdenadoOriginal);
 
         btnOrdenadoAsc = new JButton("Ordenado");
@@ -136,11 +136,15 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         String cadena = editorTexto.getText();
 
         String cadenaAComparar = "";
+        try {
         for (int i = 0; i < datosAFiltrar.size(); i++) {
             cadenaAComparar = datosAFiltrar.get(i).toLowerCase().substring(0, cadena.length());
             if (cadenaAComparar.contains(cadena.toLowerCase())) {
                 datosFiltrados.add(datosAFiltrar.get(i));
             }
+        }
+        } catch (StringIndexOutOfBoundsException e) {
+            // Evitar excepción
         }
         comboModel = new DefaultComboBoxModel<>(datosFiltrados);
         combo.setModel(comboModel);
