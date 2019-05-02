@@ -28,4 +28,12 @@ public class JCajasMultiples{
 	public String getInfo(int pos) {
 		return m.obtenerInfo(pos-1);
 	}
+        
+        public String[] getText() {
+            return v.getText();
+        }
+        
+        public String getText(int posicion) {
+            return v.getText(posicion);
+        }
 }

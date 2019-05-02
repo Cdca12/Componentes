@@ -47,12 +47,16 @@ public class JPanelCaja extends JPanel {
     public String getInfo() {
     	return textField.getTextValidado();
     }
+    
+    public String getText() {
+        return textField.getText();
+    }
 
     public JButton getBtnEliminar() {
         return btnEliminar;
     }
 
-    public static ImageIcon AjustarImagen(String ico, int Ancho, int Alto) {
+    private static ImageIcon AjustarImagen(String ico, int Ancho, int Alto) {
         ImageIcon tmpIconAux = new ImageIcon(ico);
         //Escalar Imagen
         ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(Ancho,
