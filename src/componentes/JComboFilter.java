@@ -27,13 +27,15 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
     private Vector datosOrdenado;
     private JTextComponent editorTexto;
     private boolean originalActivo = true;
+    private int ancho;
 
     public JComboFilter() {
+    	ancho = 120;
         initInterface();
         hazEscuchas();
     }
 
-    // MÃ©todos de interfaz
+    // Métodos de interfaz
     public void agrega(String dato) {
         combo.addItem(dato);
         datosOriginal.add(dato);
@@ -67,7 +69,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         setLayout(new FlowLayout());
 
         combo = new JComboBox<>();
-        combo.setPreferredSize(new Dimension(120, 40));
+        combo.setPreferredSize(new Dimension(ancho, 40));
         combo.setEditable(true);
         editorTexto = (JTextComponent) combo.getEditor().getEditorComponent();
         add(combo);
@@ -98,6 +100,9 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
         datosOrdenado = new Vector<String>(datosOriginal);
         Collections.sort(datosOrdenado);
     }
+    public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
 
     @Override
     public void actionPerformed(ActionEvent evt) {
@@ -151,7 +156,7 @@ public class JComboFilter extends JPanel implements ActionListener, KeyListener,
             }
         }
         } catch (StringIndexOutOfBoundsException e) {
-            // Evitar excepciÃ³n
+            // Evitar excepción
         }
         comboModel = new DefaultComboBoxModel<>(datosFiltrados);
         combo.setModel(comboModel);

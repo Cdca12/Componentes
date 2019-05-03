@@ -22,18 +22,19 @@ public class JCajasMultiples{
 	public JPanel getComponent() {
 		return v;
 	}
+	//Retorna la info de las cajas de texto validadas
 	public String[] getInfo() {
 		return m.obtenerInfo();
 	}
 	public String getInfo(int pos) {
 		return m.obtenerInfo(pos-1);
 	}
-        
-        public String[] getText() {
-            return v.getText();
-        }
-        
-        public String getText(int posicion) {
-            return v.getText(posicion);
-        }
+	//Retorna la info de las cajas de texto sin validación
+	public String[] getText() {
+		return v.getText();
+	}
+
+	public String getText(int posicion) {
+		return v.getText(posicion);
+	}
 }

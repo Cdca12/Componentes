@@ -14,8 +14,6 @@ public class CajasMultiplesVta extends JPanel implements ActionListener {
     public JButton btnNuevaCaja;
     public JRadioButton rdBtnCorreo, rdBtnRFC, rdBtnTelefono;
     private ButtonGroup grupo;
-    private Vector<JTextField> cajasdeTexto;
-    private Vector<JButton> btnCajasdeTexto;
     private Vector<JPanelCaja> vectorCajasDeTexto;
     private JScrollPane scroll;
     private int seleccion;
@@ -48,14 +46,14 @@ public class CajasMultiplesVta extends JPanel implements ActionListener {
         grupo = new ButtonGroup();
         rdBtnCorreo = new JRadioButton("Correos", true);
         rdBtnRFC = new JRadioButton("RFC");
-        rdBtnTelefono = new JRadioButton("TelÃ©fonos");
+        rdBtnTelefono = new JRadioButton("Teléfonos");
         grupo.add(rdBtnCorreo);
         grupo.add(rdBtnRFC);
         grupo.add(rdBtnTelefono);
         panelRadioButton.add(rdBtnCorreo);
         panelRadioButton.add(rdBtnRFC);
         panelRadioButton.add(rdBtnTelefono);
-        //PanelBotÃ³n
+        //PanelBotón
         panelBoton = new JPanel();
         panelBoton.setLayout(new FlowLayout(FlowLayout.LEFT));
         btnNuevaCaja = new JButton("Nueva Caja");

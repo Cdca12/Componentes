@@ -20,7 +20,6 @@ import javax.swing.JPanel;
  */
 public class JCombosDependientes extends JPanel implements ItemListener {
     // TODO: Ciudades
-
     private RandomAccessFile archivoEstados, archivoMunicipios, archivoCiudades;
     private final String defaultValueCmbEstados = "Seleccione estado",
             defaultValueCmbMunicipios = "Seleccione municipio",
@@ -99,7 +98,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         }
 
         setLayout(new FlowLayout());
-        lbEstados = new JLabel("Estados");
+        lbEstados = new JLabel("  Estados ");
         add(lbEstados);
 
         cmbEstados = new JComboBox<>();
@@ -118,7 +117,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
         cmbMunicipios.setPreferredSize(new Dimension(120, 25));
         add(cmbMunicipios);
 
-        lbCiudades = new JLabel("Ciudades");
+        lbCiudades = new JLabel("  Ciudades");
         add(lbCiudades);
 
         cmbCiudades = new JComboBox<>();
@@ -232,7 +231,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
                 comparadorEstado = archivoCiudades.readUTF();
                 comparadorMunicipio = archivoCiudades.readUTF();
                 if (!comparadorEstado.equals(idEstado) || !comparadorMunicipio.equals(idMunicipio)) {
-                    if (bandera) { // Si la bandera es true, terminar la bÃºsqueda
+                    if (bandera) { // Si la bandera es true, terminar la búsqueda
                         return;
                     }
                     continue;
@@ -263,7 +262,7 @@ public class JCombosDependientes extends JPanel implements ItemListener {
                     return i + 1;
                 }
             }
-            return -1; // No encontrÃ³
+            return -1; // No encontró
         } catch (IOException ex) {
             System.out.println("No se pudo obtener la longitud del archivo");
             return -1;

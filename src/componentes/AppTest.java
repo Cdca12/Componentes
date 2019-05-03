@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
+
 public class AppTest extends JFrame implements ActionListener{
 	JCajasMultiples cajaMultiple;
 	JPanel pnlMenu;
@@ -58,6 +60,11 @@ public class AppTest extends JFrame implements ActionListener{
 
 	}
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(new NimbusLookAndFeel());
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		new AppTest();
 	}
 	@Override
